@@ -1,0 +1,38 @@
+.main_chat
+  .RightHeader
+    .RightHeader__group
+      .RightHeader__groupName
+        test
+      .RightHeader___memberList
+        .RightHeader__member
+          Member :
+        .RightHeader__members
+          tomokiito
+    = link_to "#", class: "RightHeader__editButton" do
+      Edit
+  .MessageList
+    .MessageBox
+      .MessageInfo
+        .MessageInfo__userName
+          tomokiito
+        .MessageInfo__date
+          2020/7/6(thr) 16:44:01
+      .Message
+        こんにちは！
+    .MessageBox
+      .MessageInfo
+        .MessageInfo__userName
+          tomokiito
+        .MessageInfo__date
+          2020/7/6(thr) 17:03:01
+      .Message
+        こんばんは！
+  .Footer
+    %form.Form
+      .Form__contents
+        %input{type: "text", class: "Form__inputContents", placeholder: "type a message"}
+        %label{class: "Form__inputImage"}
+          = icon('fas', 'image')
+          %input{type: "file", class: "Form__inputImage__file"}
+      %input{type: "submit", class: "Form__submit"}
+

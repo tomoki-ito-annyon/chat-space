@@ -1,0 +1,19 @@
+.side_bar
+  .LeftHeader
+    .LeftHeader__list
+      %h3.LeftHeader__list__userName
+        tomokiito
+      %ul.LeftHeader__list__iconList
+        %li.LeftHeader__list__iconList__Icon
+          = link_to "#" do
+            = icon('far', 'edit')
+        %li.LeftHeader__list__iconList__Icon
+          = link_to "#" do
+            = icon('fas', 'cog')
+  .GroupList
+    .Group
+      = link_to "#", class: "Group" do
+        .Group__name
+          test
+        .Group__message
+          最新メッセージ
