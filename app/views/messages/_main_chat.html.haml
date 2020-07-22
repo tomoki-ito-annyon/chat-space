@@ -2,37 +2,39 @@
   .RightHeader
     .RightHeader__group
       .RightHeader__groupName
-        test
+        = @group.name
       .RightHeader___memberList
         .RightHeader__member
           Member :
-        .RightHeader__members
-          tomokiito
-    = link_to "#", class: "RightHeader__editButton" do
+          - @group.users.each do |user|
+            = user.name
+    = link_to edit_group_path(@group), class: "RightHeader__editButton" do
       Edit
   .MessageList
-    .MessageBox
-      .MessageInfo
-        .MessageInfo__userName
-          tomokiito
-        .MessageInfo__date
-          2020/7/6(thr) 16:44:01
-      .Message
-        こんにちは！
-    .MessageBox
-      .MessageInfo
-        .MessageInfo__userName
-          tomokiito
-        .MessageInfo__date
-          2020/7/6(thr) 17:03:01
-      .Message
-        こんばんは！
+    = render @messages
+  -# .MessageList
+  -#   .MessageBox
+  -#     .MessageInfo
+  -#       .MessageInfo__userName
+  -#         tomokiito
+  -#       .MessageInfo__date
+  -#         2020/7/6(thr) 16:44:01
+  -#     .Message
+  -#       こんにちは！
+  -#   .MessageBox
+  -#     .MessageInfo
+  -#       .MessageInfo__userName
+  -#         tomokiito
+  -#       .MessageInfo__date
+  -#         2020/7/6(thr) 17:03:01
+  -#     .Message
+  -#       こんばんは！
   .Footer
-    %form.Form
+    = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
       .Form__contents
-        %input{type: "text", class: "Form__inputContents", placeholder: "type a message"}
-        %label{class: "Form__inputImage"}
-          = icon('fas', 'image')
-          %input{type: "file", class: "Form__inputImage__file"}
-      %input{type: "submit", class: "Form__submit"}
+        = f.text_field :content, class: 'Form__inputContents', placeholder: 'type a message'
+        = f.label :image, class: 'Form__inputImage' do
+          = icon('far', 'image', class: 'Form__inputImage')
+          = f.file_field :image, class: 'Form__inputImage__file'
+      = f.submit 'send', class: 'Form__submit'
 
